@@ -1,0 +1,3 @@
+sysname=$1
+echo Looking up ${sysname} ...
+jq -cr --arg sysname "${sysname}" '.[] | select(.name==$sysname)' systems_populated.json
