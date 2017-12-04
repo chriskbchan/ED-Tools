@@ -16,15 +16,17 @@ class Station(object):
     def set_system_name(self, _system):
         self.system_name = _system
 
-    def docking_assist(self):
+    def docking_pad_layout(self):
         if self.is_planetary:
-            return False
+            return 0
         if self.type_id in [3,7,8,12,20]:	# Starports, Asteroid Base
-            return True
-        return False
+            return 1
+        if self.type_id in [1,2,4,5,6,9,11,13]: # Outposts
+            return 2
+        return 0                                # Unknown
 
     def print_info(self):
         if self.type:
-            print("Station " + self.name + " at " + self.system_name + ", type " + self.type + ", docking assist " + str(self.docking_assist()))
+            print("Station " + self.name + " at " + self.system_name + ", " + self.type + ", layout: " + str(self.docking_pad_layout()))
         else:
             print("Station " + self.name)
