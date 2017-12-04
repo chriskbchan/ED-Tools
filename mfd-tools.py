@@ -68,20 +68,16 @@ def main():
     station_data = load_stations("stations_filtered.json")
 
     # test
-    station = find_station(station_data, system_data, "Jameson Memorial", "Shinrarta Dezhra")
-    station.print_info()
-    station = find_station(station_data, system_data, "Grant Dock", "Jambe")
-    station.print_info()
-    station = find_station(station_data, system_data, "Grant Dock", "Li Nang Yi")
-    station.print_info()
-    station = find_station(station_data, system_data, "Pedersen's Legacy", "Mobia")
-    station.print_info()
-    station = find_station(station_data, system_data, "The Gnosis", "")
-    station.print_info()
-    station = find_station(station_data, system_data, "Grant Dock", "")
-    station.print_info()
-    station = find_station(station_data, system_data, "Teng-hui Station", "Bandjigali")
-    station.print_info()
+    test_data = [ ("Jameson Memorial", "Shinrarta Dezhra"),
+                  ("Grant Dock", "Jambe"),
+                  ("Grant Dock", "Li Nang Yi"),
+                  ("Pedersen's Legacy", "Mobia"),
+                  ("The Gnosis", ""),
+                  ("Grant Dock", ""),
+                  ("Teng-hui Station", "Bandjigali") ]
+    for (stn, sys) in test_data:
+        station = find_station(station_data, system_data, stn, sys)
+        station.print_info()
 
 if __name__ == "__main__":
     main()
