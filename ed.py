@@ -33,8 +33,10 @@ class Station(object):
             return 0
         if self.type_id in [3,7,8,12,20]:	# Starports, Asteroid Base
             return 1
-        if self.type_id in [1,2,4,5,6,9,11,13]: # Outposts
+        if self.type_id in [1,2,4,5,6,9]: 	# Outposts w/ image
             return 2
+        if self.type_id in [11]: 		# Outposts w/o image
+            return 3
         return 0                                # Unknown
 
     def coriolis_pad_info(self, pad_id):
