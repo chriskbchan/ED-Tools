@@ -38,6 +38,10 @@ def show_landing_pad(station, pad_id):
         pad_info = station.coriolis_pad_info(pad_id)
         print("Landing pad %d (%s) at %d o'clock %s" %
             (pad_id, Station.PAD_SIZE_DESC[pad_info[2]], pad_info[0], Station.PAD_DEPTH_DESC[pad_info[1]]) )
+    if pad_layout == 2:
+        pad_info = station.outpost_pad_info()
+        for p in pad_info:
+            print("Landing pad schema URL: %s%s" % (Station.EDDB_IMG_BASEURL,p))
 
 # main
 
@@ -52,6 +56,7 @@ def main():
                   ("Pedersen's Legacy", "Mobia"),
                   ("The Gnosis", ""),
                   ("Grant Dock", ""),
+                  ("Fowler Platform", "Apian Yi"),
                   ("Teng-hui Station", "Bandjigali") ]
     for (stn, sys) in test_data:
         station = find_station(station_data, system_data, stn, sys)

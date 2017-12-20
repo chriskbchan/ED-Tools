@@ -15,6 +15,7 @@ class Station(object):
         1, 2, 2, 3, 3, 2, 1, 1, 1, 2, 1, 3, 2, 1, 2, 1, 2, 2, 3, 3 ]        # 21 - 40
     PAD_DEPTH_DESC = [ "undefined", "near", "mid", "far" ]
     PAD_SIZE_DESC  = [ "undefined", "small", "medium", "large" ]
+    EDDB_IMG_BASEURL = "https://eddb.io/images/stations/"
 
     def __init__(self, _id, _name, _system_id, _type, _type_id, _is_planetary):
         self.id = _id
@@ -41,6 +42,23 @@ class Station(object):
 
     def coriolis_pad_info(self, pad_id):
         return ( self.COR_PAD_CLOCK[pad_id], self.COR_PAD_DEPTH[pad_id], self.COR_PAD_SIZE[pad_id] )
+
+    def outpost_pad_info(self):
+        img = []
+        if self.type_id == 1:
+            img.append("schema_civillian.png")
+            img.append("schema_civillian_industrial.png")
+        if self.type_id == 2:
+            img.append("schema_commercial.png")
+        if self.type_id == 4:
+            img.append("schema_civillian_industrial.png")
+        if self.type_id == 5:
+            img.append("schema_military.png")
+        if self.type_id == 6:
+            img.append("schema_industrial_mining.png")
+        if self.type_id == 9:
+            img.append("schema_scientific.png")
+        return img
 
     def print_info(self):
         if self.type:
